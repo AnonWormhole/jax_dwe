@@ -47,6 +47,7 @@ def voxelize(point_clouds, num_vox_per_axis, min_val = None, max_val = None):
         images = np.zeros([len(point_clouds), num_vox_per_axis, num_vox_per_axis])
         for ind, pc in enumerate(pc_norm_cord):
             images[ind][pc[:, 0], pc[:, 1]] += 1
+            images[ind] = images[ind]/images[ind].sum()
     else:
         images = np.zeros([len(point_clouds), num_vox_per_axis, num_vox_per_axis, num_vox_per_axis])
         for ind, pc in enumerate(pc_norm_cord):
